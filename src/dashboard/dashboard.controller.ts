@@ -1,3 +1,4 @@
+import { Dashboard } from './interface/dashboard.interface';
 import {
   Body,
   Controller,
@@ -7,13 +8,15 @@ import {
   Delete,
   Param,
 } from '@nestjs/common';
+import { DashboardService } from './dashboard.service';
 import { DashboardDto } from './DashboardDto';
 
 @Controller('dashboard')
 export class DashboardController {
+  constructor(private dashboardService: DashboardService) {}
   @Get()
-  findAll(): string {
-    return 'This action returns all content';
+  findAll(): Dashboard[] {
+    return this.dashboardService.findAll();
   }
 
   @Get()
@@ -23,7 +26,7 @@ export class DashboardController {
 
   @Post('/register')
   create(@Body() dashboardDto: DashboardDto) {
-    return 'this is dto' + dashboardDto;
+    return this.dashboardService.create(dashboardDto);
   }
 
   @Put('/register/:id')
