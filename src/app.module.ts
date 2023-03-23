@@ -21,7 +21,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
       port: 3306,
       username: 'root',
       password: 'rladlsxogkftndlTek!!',
-      database: 'test',
+      database: 'dashboard',
       entities: [DashboardEntity],
       synchronize: true,
     }),
